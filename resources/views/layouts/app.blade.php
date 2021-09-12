@@ -4,6 +4,7 @@
     <title>@yield('title')</title>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ asset('css/adminlte.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 </head>
 <body>
 <div class="wrapper">
@@ -17,13 +18,13 @@
                 <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu">
 
                     <li class="nav-item">
-                        <a href="/" class="nav-link active">
+                        <a href="/" class="nav-link {{ (request()->is('/')) ? 'active' : '' }}">
                             <i class="nav-icon fas fa-th"></i>
                             <p>Dashboard</p>
                         </a>
                     </li>
 
-                    <li class="nav-item">
+                    <li class="nav-item {{ (request()->is('user/*')) ? 'menu-open' : '' }}">
                         <a href="#" class="nav-link">
                             <i class="nav-icon fas fa-users"></i>
                             <p>
@@ -33,19 +34,19 @@
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="#" class="nav-link">
+                                <a href="/user/list" class="nav-link {{ (request()->is('user/list')) ? 'active' : '' }}">
                                     <i class="fas fa-list nav-icon"></i>
                                     <p>Liste des joueurs</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="#" class="nav-link">
+                                <a href="#" class="nav-link {{ (request()->is('user/team')) ? 'active' : '' }}">
                                     <i class="fas fa-list  nav-icon"></i>
                                     <p>Liste des équipes</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="#" class="nav-link">
+                                <a href="#" class="nav-link {{ (request()->is('user/rank')) ? 'active' : '' }}">
                                     <i class="fas fa-list-ol nav-icon"></i>
                                     <p>Classement</p>
                                 </a>
@@ -63,13 +64,13 @@
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="#" class="nav-link">
+                                <a href="#" class="nav-link {{ (request()->is('server.status')) ? 'active' : '' }}">
                                     <i class="fas fa-tachometer-alt nav-icon"></i>
                                     <p>Status des serveurs</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="#" class="nav-link">
+                                <a href="#" class="nav-link {{ (request()->is('server.list')) ? 'active' : '' }}">
                                     <i class="fas fa-list nav-icon"></i>
                                     <p>Liste des serveurs</p>
                                 </a>

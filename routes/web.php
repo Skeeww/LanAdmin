@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\IndexController;
 
@@ -14,4 +15,7 @@ use App\Http\Controllers\IndexController;
 |
 */
 
-Route::get('/', [IndexController::class, 'index']);
+Route::get('/', [IndexController::class, 'index'])->name('index');
+Route::prefix('user')->name('user.')->group(function() {
+    Route::get('list', [UserController::class, 'list'])->name('list');
+});
