@@ -17,6 +17,8 @@ class CreateUsersTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('email')->unique();
+            $table->foreignId('team_id');
+            $table->foreign('team_id')->references('id')->on('teams');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();

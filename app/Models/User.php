@@ -21,6 +21,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'team_id'
     ];
 
     /**
@@ -41,4 +42,14 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function getNumberOfUsers(): int
+    {
+        return User::all()->count();
+    }
+
+    public function getLast10Users(): array
+    {
+        return User::all()->sortByDesc('created_at')->take(10)->all();
+    }
 }
