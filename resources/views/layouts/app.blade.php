@@ -54,7 +54,7 @@
                         </ul>
                     </li>
 
-                    <li class="nav-item">
+                    <li class="nav-item {{ (request()->is('server/*')) ? 'menu-open' : '' }}">
                         <a href="#" class="nav-link">
                             <i class="nav-icon fas fa-server"></i>
                             <p>
@@ -64,21 +64,35 @@
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="#" class="nav-link {{ (request()->is('server.status')) ? 'active' : '' }}">
+                                <a href="#" class="nav-link {{ (request()->is('server/status')) ? 'active' : '' }}">
                                     <i class="fas fa-tachometer-alt nav-icon"></i>
                                     <p>Status des serveurs</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="#" class="nav-link {{ (request()->is('server.list')) ? 'active' : '' }}">
+                                <a href="/server/list" class="nav-link {{ (request()->is('server/list')) ? 'active' : '' }}">
                                     <i class="fas fa-list nav-icon"></i>
                                     <p>Liste des serveurs</p>
                                 </a>
                             </li>
                         </ul>
                     </li>
-
+                    <li class="nav-item">
+                        <a href="/ticket" class="nav-link {{ (request()->is('ticket')) ? 'active' : '' }}">
+                            <i class="fas fa-ticket-alt nav-icon"></i>
+                            <p>Gestion des tickets</p>
+                        </a>
+                    </li>
                 </ul>
+            </nav>
+            <nav class="mt-2">
+                <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu">
+                    <li class="nav-item">
+                        <a href="/logout" class="nav-link bg-danger">
+                            <i class="fas fa-sign-out-alt"></i>
+                            <p>Déconnexion</p>
+                        </a>
+                    </li>
             </nav>
         </div>
     </aside>

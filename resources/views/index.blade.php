@@ -3,7 +3,6 @@
 @section('content')
     <div class="container-fluid">
         <div class="row">
-
             <div class="col-lg-3">
                 <div class="small-box bg-gradient-success">
                     <div class="inner">

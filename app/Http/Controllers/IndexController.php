@@ -11,7 +11,7 @@ class IndexController extends Controller
     function index() {
         $user = new User();
         $team = new Team();
-
+        
         return view("index", [
             "users_count"   => $user->getNumberOfUsers(),
             "teams_count"   => $team->getNumberOfTeams(),
