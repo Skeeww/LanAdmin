@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -20,6 +19,7 @@ class LoginController extends Controller
         if(Auth::attempt(['email' => $validate['email'], 'password' => $validate['password']])) {
             return redirect('/');
         }
+        return redirect()->back()->withErrors(["Aucun compte trouvé avec ces identifiants"]);
     }
 
     function logout() {

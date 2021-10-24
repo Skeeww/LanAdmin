@@ -93,6 +93,7 @@
                             <p>Déconnexion</p>
                         </a>
                     </li>
+                </ul>
             </nav>
         </div>
     </aside>
