@@ -16,7 +16,7 @@
                 <tbody>
                     @foreach($data as $res)
                         <tr>
-                            <td><a target="{{$res['order_ext_id']}}" href="{{$res['product_management']}}">{{$res['order_ext_id']}}</a></td>
+                            <td><a href="#" onClick="window.open('{{$res['product_management']}}','Ticket N°{{$res['order_ext_id']}}','width=600,height=480');">{{$res['order_ext_id']}}</a></td>
                             <td>{{$res['order_name']}} {{$res['order_firstname']}}</td>
                             <td>{{$res['order_email']}}</td>
                             @if(isset($res['custom']['Nom de votre équipe']))

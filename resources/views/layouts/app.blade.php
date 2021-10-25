@@ -2,6 +2,7 @@
 <head>
     <meta charset="utf8">
     <title>@yield('title')</title>
+    <meta name="viewport" content= "width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ asset('css/adminlte.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
@@ -80,8 +81,31 @@
                     <li class="nav-item">
                         <a href="/ticket" class="nav-link {{ (request()->is('ticket')) ? 'active' : '' }}">
                             <i class="fas fa-ticket-alt nav-icon"></i>
-                            <p>Gestion des tickets</p>
+                            <p>Liste des tickets</p>
                         </a>
+                    </li>
+                    <li class="nav-item {{ (request()->is('staff/*')) ? 'menu-open' : '' }}">
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon fas fa-people-carry"></i>
+                            <p>
+                                Gestion du staff
+                                <i class="right fas fa-angle-left"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="/staff/add" class="nav-link {{ (request()->is('staff/add')) ? 'active' : '' }}">
+                                    <i class="fas fa-plus nav-icon"></i>
+                                    <p>Ajouter un membre</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="/staff/list" class="nav-link {{ (request()->is('staff/list')) ? 'active' : '' }}">
+                                    <i class="fas fa-list nav-icon"></i>
+                                    <p>Liste du staff</p>
+                                </a>
+                            </li>
+                        </ul>
                     </li>
                 </ul>
             </nav>
@@ -95,6 +119,7 @@
                     </li>
                 </ul>
             </nav>
+            <p class="my-2 text-center text-gray">{{\Illuminate\Support\Facades\Auth::user()->name}}</p>
         </div>
     </aside>
     <div class="content-wrapper py-5">

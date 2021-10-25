@@ -4,14 +4,13 @@ namespace App\Models;
 
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
-use Laravel\Sanctum\HasApiTokens;
 
-class User extends Authenticatable
+class User extends Model
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasFactory;
 
     /**
      * The attributes that are mass assignable.
@@ -46,12 +45,20 @@ class User extends Authenticatable
 
     public function getNumberOfUsers(): int
     {
-        return User::all()->count();
+        $users = Cache::remember('users', 120, function() {
+            return User::all();
+        });
+
+        return $users->count();
     }
 
     public function getLast10Users(): array
     {
-        return User::all()->sortByDesc('created_at')->take(10)->all();
+        $users = Cache::remember('users', 120, function() {
+            return User::all();
+        });
+
+        return $users->sortByDesc('created_at')->take(10)->all();
     }
 
     public function getUsersPagination($sort_column = 'id', $direction = 'asc', $pagination = 15): LengthAwarePaginator

@@ -64,6 +64,11 @@
             </div>
 
         </div>
+        <div class="container">
+            <form method="GET" action="/search">
+                <input class="form-control" name="query" type="text" placeholder="Rechercher un joueur, une équipe, etc..."/>
+            </form>
+        </div>
         <div class="table-responsive">
             <table class="table table-bordered table-hover">
                 <thead>
@@ -86,8 +91,5 @@
                 </tbody>
             </table>
         </div>
-        @for($i=0;$i<500;$i++)
-            <br>
-        @endfor
     </div>
 @endsection
