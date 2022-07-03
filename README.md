@@ -1,4 +1,4 @@
-![LanAdmin](https://gitlab.com/skewram/lanadmin/-/raw/dev/public/assets/img/Logo-Banner.png)
+![LanAdmin](https://gitlab.com/skewram/lanadmin/-/raw/main/public/assets/img/Logo-Banner.png)
 
 This is a web panel to help you manage your LAN. It is a work in progress and is not yet complete.
 
