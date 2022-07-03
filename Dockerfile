@@ -1,8 +1,9 @@
 FROM php:alpine
 
-RUN mkdir /app
 WORKDIR /app
 
-ENTRYPOINT [ "php", "artisan", "serve" ]
+COPY . .
+
+ENTRYPOINT [ "php", "artisan", "serve", "--host", "0.0.0.0", "--port", "8000"]
 
 EXPOSE 8000
