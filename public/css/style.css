@@ -1,0 +1,6 @@
+body:not(.layout-fixed) .main-sidebar
+{
+    position: fixed;
+    top: 0;
+    left: 0;
+}

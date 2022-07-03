@@ -1,0 +1,28 @@
+version: "3.9"
+
+services:
+  web:
+    build: .
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./:/app
+    networks:
+      - host
+      - backbone
+
+  db:
+    image: mysql
+    volumes:
+      - ./data/db:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: "root"
+      MYSQL_DATABASE: "lanadmin"
+      MYSQL_USER: "test"
+      MYSQL_PASSWORD: "test"
+    networks:
+      - backbone
+
+networks:
+  host:
+  backbone:
